@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEACE Initiative — Allen School</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1214;
+    --paper: #f5f0e8;
+    --sage: #4a6741;
+    --sage-light: #7a9e71;
+    --sage-pale: #c8dbc4;
+    --gold: #c8a84b;
+    --gold-pale: #f0e4bc;
+    --rust: #a0442c;
+    --sky: #2d5f8a;
+    --sky-pale: #ccdded;
+    --plum: #5a3468;
+    --plum-pale: #d8c8e0;
+    --cream: #faf7f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  .poster {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 48px 80px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+    position: relative;
+  }
+
+  .header::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--sage), var(--gold), var(--sage), transparent);
+    margin-bottom: 32px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -1px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .title span {
+    color: var(--sage);
+  }
+
+  .subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .acronym-row {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 24px auto 8px;
+    max-width: 640px;
+  }
+
+  .acronym-letter {
+    flex: 1;
+    text-align: center;
+    padding: 10px 4px;
+    border-top: 2px solid var(--sage-pale);
+    border-bottom: 2px solid var(--sage-pale);
+  }
+
+  .acronym-letter:first-child { border-left: 2px solid var(--sage-pale); border-radius: 6px 0 0 6px; }
+  .acronym-letter:last-child  { border-right: 2px solid var(--sage-pale); border-radius: 0 6px 6px 0; }
+
+  .acronym-letter .big {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--sage);
+    line-height: 1;
+  }
+
+  .acronym-letter .small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-top: 3px;
+  }
+
+  .header-meta {
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.06em;
+    margin-top: 20px;
+  }
+
+  .header::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sage-pale), transparent);
+    margin-top: 32px;
+  }
+
+  /* ── MISSION STRIP ── */
+  .mission {
+    background: var(--sage);
+    color: white;
+    padding: 22px 36px;
+    border-radius: 8px;
+    margin-bottom: 52px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .mission-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+
+  .mission-text {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #e8f0e6;
+  }
+
+  /* ── PYRAMID ── */
+  .pyramid-section {
+    margin-bottom: 52px;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .pyramid-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .pyramid-tier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 8px 0;
+    transition: transform 0.2s;
+  }
+
+  .pyramid-tier:hover { transform: scaleX(1.02); }
+
+  .t1 { width: 100px;  background: var(--sage); }
+  .t2 { width: 160px;  background: #5d7e54; }
+  .t3 { width: 220px;  background: #6f8f66; }
+  .t4 { width: 280px;  background: #81a079; }
+  .t5 { width: 340px;  background: var(--sage-pale); color: var(--sage); }
+
+  .pyramid-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    text-align: left;
+  }
+
+  .pyramid-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .pyramid-label .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── STRATEGIES GRID ── */
+  .strategies-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .strategy-card {
+    border-radius: 10px;
+    padding: 28px 26px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .strategy-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: -16px;
+    right: 16px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 88px;
+    font-weight: 400;
+    opacity: 0.08;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .s1 { background: var(--gold-pale);   border-top: 4px solid var(--gold); }
+  .s2 { background: var(--sky-pale);    border-top: 4px solid var(--sky); }
+  .s3 { background: var(--plum-pale);   border-top: 4px solid var(--plum); }
+  .s4 { background: var(--sage-pale);   border-top: 4px solid var(--sage); }
+  .s5 { background: #fde8e0;             border-top: 4px solid var(--rust); grid-column: 1 / -1; }
+
+  .strategy-tag {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .s1 .strategy-tag { color: var(--gold); }
+  .s2 .strategy-tag { color: var(--sky); }
+  .s3 .strategy-tag { color: var(--plum); }
+  .s4 .strategy-tag { color: var(--sage); }
+  .s5 .strategy-tag { color: var(--rust); }
+
+  .strategy-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .strategy-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 14px;
+  }
+
+  .recs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .s5 .recs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .rec {
+    background: rgba(255,255,255,0.6);
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .rec-num {
+    font-weight: 700;
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #999;
+  }
+
+  .status-pill {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-left: 4px;
+  }
+
+  .done   { background: #d0ecd0; color: #2a6a2a; }
+  .prog   { background: #d0e4f4; color: #1a4a7a; }
+  .todo   { background: #ebebeb; color: #666; }
+
+  /* ── STAKEHOLDERS ROW ── */
+  .stakeholders {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .stakeholder {
+    flex: 1;
+    min-width: 140px;
+    background: var(--cream);
+    border: 1px solid var(--sage-pale);
+    border-radius: 8px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .stakeholder-icon { font-size: 26px; margin-bottom: 6px; }
+  .stakeholder-name {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .stakeholder-role {
+    font-size: 10px;
+    color: #888;
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--sage-pale);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+  }
+
+  .footer-left .school {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  .footer-left .grant {
+    font-size: 10px;
+    color: #aaa;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .authors {
+    font-size: 10px;
+    color: #aaa;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 680px) {
+    .strategies-grid { grid-template-columns: 1fr; }
+    .s5 .recs { grid-template-columns: 1fr; }
+    .title { font-size: 48px; }
+    .pyramid-wrapper { flex-direction: column; }
+    .poster { padding: 32px 24px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="eyebrow">University of Washington</div>
+    <h1 class="title"><span>PEACE</span></h1>
+
+    <div class="acronym-row">
+      <div class="acronym-letter">
+        <span class="small">Proactively</span>
+      </div>
+      <div class="acronym-letter">
+        <span class="small">Exploring</span>
+      </div>
+      <div class="acronym-letter">
+        <span class="small">Anticipating</span>
+      </div>
+      <div class="acronym-letter">
+        <span class="small">Consequences</span>
+      </div>
+      <div class="acronym-letter">
+        <span class="small">Ethics</span>
+      </div>
+    </div>
+
+    <div class="header-meta">NSF Ethics &amp; Responsible Research · Grant #2315937</div>
+  </header>
+
+  <!-- MISSION -->
+  <div class="mission">
+    <div class="mission-icon">🌱</div>
+    <div class="mission-text">
+      Transforming the Allen School so that researchers anticipate potential
+      societal implications of their computing innovations <em>proactively, often, and early</em> in the process.
+    </div>
+  </div>
+
+  <!-- PYRAMID -->
+  <div class="pyramid-section">
+    <div class="section-label">Five-Layer Change Model — Center for Open Science Pyramid</div>
+    <div class="pyramid-wrapper">
+      <div class="pyramid">
+        <div class="pyramid-tier t1">Policy</div>
+        <div class="pyramid-tier t2">Incentives</div>
+        <div class="pyramid-tier t3">Communities</div>
+        <div class="pyramid-tier t4">User Interface</div>
+        <div class="pyramid-tier t5">Infrastructure</div>
+      </div>
+      <div class="pyramid-labels">
+        <div class="pyramid-label"><div class="dot" style="background:var(--sage)"></div><strong>Make it Grounded</strong> — shared values &amp; ethics code</div>
+        <div class="pyramid-label"><div class="dot" style="background:#5d7e54"></div><strong>Make it Rewarding</strong> — incentives &amp; recognition</div>
+        <div class="pyramid-label"><div class="dot" style="background:#6f8f66"></div><strong>Make it Normative</strong> — education &amp; community</div>
+        <div class="pyramid-label"><div class="dot" style="background:#81a079"></div><strong>Make it Easy</strong> — tools &amp; access</div>
+        <div class="pyramid-label"><div class="dot" style="background:var(--sage-pale)"></div><strong>Make it Possible</strong> — infrastructure &amp; platform</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY CARDS -->
+  <div class="strategies-grid">
+
+    <div class="strategy-card s1" data-num="1">
+      <div class="strategy-tag">Strategy 1 · Policy</div>
+      <h2 class="strategy-title">Make it<br>Grounded</h2>
+      <p class="strategy-desc">Anchor research culture in shared ethical values through living documents and visible faculty leadership.</p>
+      <div class="recs">
+        <div class="rec"><span class="rec-num">R1</span> Create a living ethics document with dept. expectations &amp; pointers to ACM, Google, and Microsoft codes <span class="status-pill todo">To Do</span></div>
+        <div class="rec"><span class="rec-num">R2</span> Secure faculty leadership buy-in; directors champion ethics in talks <span class="status-pill prog">In Progress</span></div>
+        <div class="rec"><span class="rec-num">R3</span> Frame ethics as UW CSE's competitive differentiator nationally <span class="status-pill todo">To Do</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card s2" data-num="2">
+      <div class="strategy-tag">Strategy 2 · Incentives</div>
+      <h2 class="strategy-title">Make it<br>Rewarding</h2>
+      <p class="strategy-desc">Close the decision–action gap by aligning institutional incentives with ethical research behaviors.</p>
+      <div class="recs">
+        <div class="rec"><span class="rec-num">R4</span> Reframe societal impact work as cross-disciplinary collaboration opportunity <span class="status-pill todo">To Do</span></div>
+        <div class="rec"><span class="rec-num">R5</span> Add PEACE reflection questions to PhD &amp; faculty annual review forms <span class="status-pill todo">To Do</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card s3" data-num="3">
+      <div class="strategy-tag">Strategy 3 · Communities</div>
+      <h2 class="strategy-title">Make it<br>Normative</h2>
+      <p class="strategy-desc">Embed ethics across educational and institutional practices at every level — student, faculty, and admin.</p>
+      <div class="recs">
+        <div class="rec"><span class="rec-num">R6</span> Provide educational resources &amp; case studies for classrooms <span class="status-pill done">Done</span></div>
+        <div class="rec"><span class="rec-num">R7</span> Onboarding sessions for incoming undergrads, grads &amp; postdocs <span class="status-pill todo">To Do</span></div>
+        <div class="rec"><span class="rec-num">R8</span> Ethics primer in the "How to PhD" first-year course <span class="status-pill todo">To Do</span></div>
+        <div class="rec"><span class="rec-num">R9</span> Student–faculty ethics project collaborations <span class="status-pill todo">To Do</span></div>
+        <div class="rec"><span class="rec-num">R10</span> Faculty lunch workshop to launch PEACE <span class="status-pill done">Done</span></div>
+        <div class="rec"><span class="rec-num">R11</span> 30-min lab mini-workshops across Allen School <span class="status-pill done">Done</span></div>
+        <div class="rec"><span class="rec-num">R12</span> Ethics advisory board advertised for informal consultation <span class="status-pill done">Done</span></div>
+        <div class="rec"><span class="rec-num">R13</span> PhD students raise ethics questions in annual review <span class="status-pill todo">To Do</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card s4" data-num="4">
+      <div class="strategy-tag">Strategy 4 · User Experience</div>
+      <h2 class="strategy-title">Make it<br>Easy</h2>
+      <p class="strategy-desc">Reduce barriers to ethical thinking with accessible tools, case studies, and expert dialogue channels.</p>
+      <div class="recs">
+        <div class="rec"><span class="rec-num">R14</span> CS-area-specific case study modules to overcome deflection mindset <span class="status-pill prog">In Progress</span></div>
+        <div class="rec"><span class="rec-num">R15</span> Easy-access brainstorming tools (Envisioning Cards, Tarot of Tech, LLMs) <span class="status-pill prog">In Progress</span></div>
+        <div class="rec"><span class="rec-num">R16</span> Connect researchers to ethics consultation &amp; open dialogue services <span class="status-pill prog">In Progress</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-card s5" data-num="5">
+      <div class="strategy-tag">Strategy 5 · Infrastructure</div>
+      <h2 class="strategy-title">Make it Possible — Build the Platform</h2>
+      <p class="strategy-desc">A central Allen School web resource containing case studies, anticipation tools, and advisory board access — the foundation everything else rests on.</p>
+      <div class="recs">
+        <div class="rec">📚 Case study library spanning all CS subareas</div>
+        <div class="rec">🛠 Self-serve tools to anticipate undesirable consequences</div>
+        <div class="rec">🤝 Ethics advisory board access &amp; PEACE report submission</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STAKEHOLDERS -->
+  <div class="section-label" style="margin-bottom:14px;">Key Stakeholders</div>
+  <div class="stakeholders">
+    <div class="stakeholder">
+      <div class="stakeholder-icon">🔬</div>
+      <div class="stakeholder-name">PEACE Team</div>
+      <div class="stakeholder-role">Resources, tools, workshops &amp; research</div>
+    </div>
+    <div class="stakeholder">
+      <div class="stakeholder-icon">🎓</div>
+      <div class="stakeholder-name">Faculty Members</div>
+      <div class="stakeholder-role">Role models, course integration, buy-in</div>
+    </div>
+    <div class="stakeholder">
+      <div class="stakeholder-icon">🏛</div>
+      <div class="stakeholder-name">CSE Admin</div>
+      <div class="stakeholder-role">Policy, annual review, incentive design</div>
+    </div>
+    <div class="stakeholder">
+      <div class="stakeholder-icon">⚖️</div>
+      <div class="stakeholder-name">Ethics Advisory Board</div>
+      <div class="stakeholder-role">Informal guidance &amp; open dialogue</div>
+    </div>
+    <div class="stakeholder">
+      <div class="stakeholder-icon">👩‍💻</div>
+      <div class="stakeholder-name">PhD Students</div>
+      <div class="stakeholder-role">Annual reflection, project collaboration</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="school">Paul G. Allen School of Computer Science &amp; Engineering</div>
+      <div class="grant">NSF Ethics &amp; Responsible Research Program · Grant #2315937</div>
+    </div>
+    <div class="authors">
+      Migineishvili · Gao · Pang<br>
+      Reinecke · Grossman · Kohno
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
